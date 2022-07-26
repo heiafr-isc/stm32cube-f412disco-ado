@@ -168,6 +168,7 @@ static void SystemInit_ExtMemCtl(void);
  * @param  None
  * @retval None
  */
+// cppcheck-suppress unusedFunction
 void SystemInit(void) {
 /* FPU settings ------------------------------------------------------------*/
 #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
@@ -221,6 +222,7 @@ void SystemInit(void) {
  * @param  None
  * @retval None
  */
+// cppcheck-suppress unusedFunction
 void SystemCoreClockUpdate(void) {
     uint32_t tmp = 0, pllvco = 0, pllp = 2, pllsource = 0, pllm = 2;
 
