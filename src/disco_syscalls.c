@@ -5,8 +5,9 @@
  * @author      : Jacques Supcik <jacques.supcik@hefr.ch>
  * @date        : 26. July 2022
  ******************************************************************************
- * @copyright   : Copyright (c) 2022 
+ * @copyright   : Copyright (c) 2022 HEIA-FR / ISC
  *                Haute école d'ingénierie et d'architecture de Fribourg
+ *                Informatique et Systèmes de Communication
  * @attention   : SPDX-License-Identifier: MIT OR Apache-2.0
  ******************************************************************************
  * @details
@@ -34,7 +35,8 @@ static UART_HandleTypeDef huart2;
  * @brief Initializes the console (USART2) used for the syscalls
  * @returns None
  */
-void Disco_Syscalls_Init() {
+// cppcheck-suppress unusedFunction
+void DiscoSyscallsInit() {
     huart2.Instance          = USART2;
     huart2.Init.BaudRate     = 115200;
     huart2.Init.WordLength   = UART_WORDLENGTH_8B;
@@ -52,6 +54,7 @@ void Disco_Syscalls_Init() {
     setvbuf(stdout, NULL, _IONBF, 0);
 }
 
+// cppcheck-suppress unusedFunction
 int _isatty(int fd) {
     if (fd < STDIN_FILENO || fd > STDERR_FILENO) {
         errno = EBADF;
@@ -60,6 +63,7 @@ int _isatty(int fd) {
     return 1;
 }
 
+// cppcheck-suppress unusedFunction
 int _write(int fd, char* ptr, int len) {
     if (fd != STDOUT_FILENO && fd != STDERR_FILENO) {
         errno = EBADF;
@@ -83,6 +87,7 @@ int _write(int fd, char* ptr, int len) {
     return len;
 }
 
+// cppcheck-suppress unusedFunction
 int _close(int fd) {
     if (fd < STDIN_FILENO || fd > STDERR_FILENO) {
         errno = EBADF;
@@ -91,6 +96,7 @@ int _close(int fd) {
     return 0;
 }
 
+// cppcheck-suppress unusedFunction
 int _lseek(int fd, int ptr, int dir) {
     (void)fd;
     (void)ptr;
@@ -100,6 +106,7 @@ int _lseek(int fd, int ptr, int dir) {
     return -1;
 }
 
+// cppcheck-suppress unusedFunction
 int _read(int fd, char* ptr, int len) {
     if (fd != STDIN_FILENO) {
         errno = EBADF;
@@ -108,6 +115,7 @@ int _read(int fd, char* ptr, int len) {
     return (HAL_UART_Receive(&huart2, (uint8_t*)ptr, 1, HAL_MAX_DELAY) == HAL_OK) ? 1 : EIO;
 }
 
+// cppcheck-suppress unusedFunction
 int _fstat(int fd, struct stat* st) {
     if (fd < STDIN_FILENO || fd > STDERR_FILENO) {
         errno = EBADF;

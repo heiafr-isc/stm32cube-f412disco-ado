@@ -5,8 +5,9 @@
  * @author      : Jacques Supcik <jacques.supcik@hefr.ch>
  * @date        : 26. July 2022
  ******************************************************************************
- * @copyright   : Copyright (c) 2022 
+ * @copyright   : Copyright (c) 2022 HEIA-FR / ISC
  *                Haute école d'ingénierie et d'architecture de Fribourg
+ *                Informatique et Systèmes de Communication
  * @attention   : SPDX-License-Identifier: MIT OR Apache-2.0
  ******************************************************************************
  * @details
@@ -15,9 +16,17 @@
  ******************************************************************************
  */
 
-#ifndef DISCO_SYSCALLS_H_
-#define DISCO_SYSCALLS_H_
+#ifndef INCLUDE_DISCO_SYSCALLS_H_
+#define INCLUDE_DISCO_SYSCALLS_H_
 
-void Disco_Syscalls_Init();
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#endif /* DISCO_SYSCALLS_H_ */
+void DiscoSyscallsInit();
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* INCLUDE_DISCO_SYSCALLS_H_ */

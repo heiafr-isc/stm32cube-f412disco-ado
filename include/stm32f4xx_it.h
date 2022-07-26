@@ -18,8 +18,9 @@
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __STM32F4xx_IT_H
-#define __STM32F4xx_IT_H
+
+#ifndef INCLUDE_STM32F4XX_IT_H_
+#define INCLUDE_STM32F4XX_IT_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -61,4 +62,4 @@ void TIM6_IRQHandler(void);
 }
 #endif
 
-#endif /* __STM32F4xx_IT_H */
+#endif /* INCLUDE_STM32F4XX_IT_H_ */

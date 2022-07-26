@@ -1,7 +1,7 @@
 /**
  ******************************************************************************
- * @file        : error_handler.h
- * @brief       : Error Handler
+ * @file        : test_main.c
+ * @brief       : Basic tests
  * @author      : Jacques Supcik <jacques.supcik@hefr.ch>
  * @date        : 26. July 2022
  ******************************************************************************
@@ -11,21 +11,30 @@
  * @attention   : SPDX-License-Identifier: MIT OR Apache-2.0
  ******************************************************************************
  * @details
- * This code implements the error handler by blinking the red LED
+ * Basic tests
  ******************************************************************************
  */
 
-#ifndef INCLUDE_ERROR_HANDLER_H_
-#define INCLUDE_ERROR_HANDLER_H_
+#include "stm32412g_discovery.h"
+#include "stm32f4xx_hal.h"
+#include "system_clock.h"
+#include "unity.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+void setUp(void) {}
 
-void ErrorHandler(void);
+void tearDown(void) {}
 
-#ifdef __cplusplus
+void BasicTest() {}
+
+int main(void) {
+    HAL_Init();
+    SystemClock_Config();
+    HAL_Delay(2000);  // Mandatory waiting for 2 seconds...
+    UNITY_BEGIN();    // Mandatory call to initialize test framework
+    RUN_TEST(BasicTest);
+    UNITY_END();  // Mandatory call to finalize test framework
+
+    while (1) {
+        asm("nop");
+    }
 }
-#endif
-
-#endif /* INCLUDE_ERROR_HANDLER_H_ */

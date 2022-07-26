@@ -23,7 +23,7 @@
 // This function is called  when TIM6 interrupt took place, inside
 // HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
 // a global variable "uwTick" used as application time base.
-static void period_elapsed_callback(TIM_HandleTypeDef* htim) { HAL_IncTick(); };
+static void period_elapsed_callback(TIM_HandleTypeDef* htim) { HAL_IncTick(); }
 
 TIM_HandleTypeDef htim6;
 
@@ -36,6 +36,7 @@ TIM_HandleTypeDef htim6;
  * @param  TickPriority: Tick interrupt priority.
  * @retval HAL status
  */
+// cppcheck-suppress unusedFunction
 HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority) {
     RCC_ClkInitTypeDef clkconfig;
     uint32_t uwTimclock, uwAPB1Prescaler = 0U;
@@ -111,6 +112,7 @@ HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority) {
  * @param  None
  * @retval None
  */
+// cppcheck-suppress unusedFunction
 void HAL_SuspendTick(void) {
     // Disable TIM6 update Interrupt
     __HAL_TIM_DISABLE_IT(&htim6, TIM_IT_UPDATE);
@@ -122,6 +124,7 @@ void HAL_SuspendTick(void) {
  * @param  None
  * @retval None
  */
+// cppcheck-suppress unusedFunction
 void HAL_ResumeTick(void) {
     // Enable TIM6 Update interrupt
     __HAL_TIM_ENABLE_IT(&htim6, TIM_IT_UPDATE);

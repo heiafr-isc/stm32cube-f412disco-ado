@@ -1,3 +1,20 @@
+/**
+ ******************************************************************************
+ * @file        : system_clock.c
+ * @brief       : Configure System Clock to 100MHz
+ * @author      : Jacques Supcik <jacques.supcik@hefr.ch>
+ * @date        : 26. July 2022
+ ******************************************************************************
+ * @copyright   : Copyright (c) 2022 HEIA-FR / ISC
+ *                Haute école d'ingénierie et d'architecture de Fribourg
+ *                Informatique et Systèmes de Communication
+ * @attention   : SPDX-License-Identifier: MIT OR Apache-2.0
+ ******************************************************************************
+ * @details
+ * Configure the system clock to 100MHz using the 8MHz HSE Clock
+ ******************************************************************************
+ */
+
 #include "system_clock.h"
 
 #include "error_handler.h"
@@ -7,7 +24,8 @@
  * @brief System Clock Configuration
  * @retval None
  */
-void SystemClock_Config(void) {
+// cppcheck-suppress unusedFunction
+void SystemClock_Config() {
     RCC_OscInitTypeDef RCC_OscInitStruct = {0};
     RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
@@ -29,7 +47,7 @@ void SystemClock_Config(void) {
     RCC_OscInitStruct.PLL.PLLQ       = 4;
     RCC_OscInitStruct.PLL.PLLR       = 2;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
-        Error_Handler();
+        ErrorHandler();
     }
 
     /** Initializes the CPU, AHB and APB buses clocks
@@ -42,6 +60,6 @@ void SystemClock_Config(void) {
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK) {
-        Error_Handler();
+        ErrorHandler();
     }
 }

@@ -28,6 +28,7 @@ extern TIM_HandleTypeDef htim6;
 /**
  * @brief This function handles Non maskable interrupt.
  */
+// cppcheck-suppress unusedFunction
 void NMI_Handler(void) {
     while (1) {
     }
@@ -36,6 +37,7 @@ void NMI_Handler(void) {
 /**
  * @brief This function handles Hard fault interrupt.
  */
+// cppcheck-suppress unusedFunction
 void HardFault_Handler(void) {
     while (1) {
     }
@@ -44,6 +46,7 @@ void HardFault_Handler(void) {
 /**
  * @brief This function handles Memory management fault.
  */
+// cppcheck-suppress unusedFunction
 void MemManage_Handler(void) {
     while (1) {
     }
@@ -52,6 +55,7 @@ void MemManage_Handler(void) {
 /**
  * @brief This function handles Pre-fetch fault, memory access fault.
  */
+// cppcheck-suppress unusedFunction
 void BusFault_Handler(void) {
     while (1) {
     }
@@ -60,6 +64,7 @@ void BusFault_Handler(void) {
 /**
  * @brief This function handles Undefined instruction or illegal state.
  */
+// cppcheck-suppress unusedFunction
 void UsageFault_Handler(void) {
     while (1) {
     }
@@ -68,6 +73,7 @@ void UsageFault_Handler(void) {
 /**
  * @brief This function handles Debug monitor.
  */
+// cppcheck-suppress unusedFunction
 void DebugMon_Handler(void) {}
 
 /******************************************************************************/
@@ -80,4 +86,5 @@ void DebugMon_Handler(void) {}
 /**
  * @brief This function handles TIM6 global interrupt.
  */
+// cppcheck-suppress unusedFunction
 void TIM6_IRQHandler(void) { HAL_TIM_IRQHandler(&htim6); }

@@ -5,8 +5,9 @@
  * @author      : Jacques Supcik <jacques.supcik@hefr.ch>
  * @date        : 26. July 2022
  ******************************************************************************
- * @copyright   : Copyright (c) 2022 
+ * @copyright   : Copyright (c) 2022 HEIA-FR / ISC
  *                Haute école d'ingénierie et d'architecture de Fribourg
+ *                Informatique et Systèmes de Communication
  * @attention   : SPDX-License-Identifier: MIT OR Apache-2.0
  ******************************************************************************
  * @details
@@ -19,7 +20,7 @@
 #include "stm32412g_discovery.h"
 #include "stm32f4xx_hal.h"
 
-static void busy_wait(uint64_t n) {
+static void BusyWait(uint64_t n) {
     for (int i = 0; i < n; i++) {
         asm("nop");
     }
@@ -36,12 +37,13 @@ static void busy_wait(uint64_t n) {
  *
  * @returns None
  */
-void Error_Handler(void) {
+// cppcheck-suppress unusedFunction
+void ErrorHandler(void) {
     __disable_irq();
     BSP_LED_Init(LED_RED);
     BSP_LED_On(LED_RED);
     while (1) {
-        busy_wait(2000000);
+        BusyWait(2000000);
         BSP_LED_Toggle(LED_RED);
     }
 }
