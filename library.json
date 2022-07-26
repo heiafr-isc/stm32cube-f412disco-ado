@@ -1,0 +1,19 @@
+{
+    "name": "stm32cube-f412disco-ado",
+    "version": "0.1.0",
+    "authors": {
+        "name": "Jacques Supcik",
+        "email": "jacques.supcik@hefr.ch",
+        "maintainer": true
+    },
+    "license": "Apache-2.0",
+    "frameworks": [
+        "stm32cube"
+    ],
+    "platforms": [
+        "ststm32"
+    ],
+    "build": {
+        "libArchive": false
+    }
+}
