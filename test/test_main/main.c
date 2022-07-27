@@ -3,7 +3,7 @@
  * @file        : test_main.c
  * @brief       : Basic tests
  * @author      : Jacques Supcik <jacques.supcik@hefr.ch>
- * @date        : 26. July 2022
+ * @date        : 27. July 2022
  ******************************************************************************
  * @copyright   : Copyright (c) 2022 HEIA-FR / ISC
  *                Haute école d'ingénierie et d'architecture de Fribourg
@@ -20,18 +20,54 @@
 #include "system_clock.h"
 #include "unity.h"
 
-void setUp(void) {}
+#define LEDn 4
+uint16_t led_pins[LEDn] = {
+    LED1_PIN,
+    LED2_PIN,
+    LED3_PIN,
+    LED4_PIN,
+};
 
-void tearDown(void) {}
+void setUp(void) {
+    BSP_LED_Init(LED_GREEN);
+    BSP_LED_Init(LED_ORANGE);
+    BSP_LED_Init(LED_RED);
+    BSP_LED_Init(LED_BLUE);
+    BSP_LED_On(LED_BLUE);
+}
 
-void BasicTest() {}
+void tearDown(void) {
+    BSP_LED_DeInit(LED_GREEN);
+    BSP_LED_DeInit(LED_ORANGE);
+    BSP_LED_DeInit(LED_RED);
+    BSP_LED_DeInit(LED_BLUE);
+}
+
+void test_led_state_high(void) {
+    for (int i = 0; i < LEDn; i++) {
+        HAL_GPIO_WritePin(LEDx_GPIO_PORT, led_pins[i], GPIO_PIN_SET);
+        TEST_ASSERT_EQUAL(HAL_GPIO_ReadPin(LEDx_GPIO_PORT, led_pins[i]), GPIO_PIN_SET);
+    }
+    HAL_Delay(500);
+}
+
+void test_led_state_low(void) {
+    for (int i = 0; i < LEDn; i++) {
+        HAL_GPIO_WritePin(LEDx_GPIO_PORT, led_pins[i], GPIO_PIN_RESET);
+        TEST_ASSERT_EQUAL(HAL_GPIO_ReadPin(LEDx_GPIO_PORT, led_pins[i]), GPIO_PIN_RESET);
+    }
+    HAL_Delay(500);
+}
 
 int main(void) {
     HAL_Init();
     SystemClock_Config();
     HAL_Delay(2000);  // Mandatory waiting for 2 seconds...
     UNITY_BEGIN();    // Mandatory call to initialize test framework
-    RUN_TEST(BasicTest);
+    for (int i = 0; i < 5; i++) {
+        RUN_TEST(test_led_state_high);
+        RUN_TEST(test_led_state_low);
+    }
     UNITY_END();  // Mandatory call to finalize test framework
 
     while (1) {
