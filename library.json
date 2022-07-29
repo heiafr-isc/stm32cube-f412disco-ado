@@ -1,6 +1,6 @@
 {
     "name": "stm32cube-f412disco-ado",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "authors": {
         "name": "Jacques Supcik",
         "email": "jacques.supcik@hefr.ch",
