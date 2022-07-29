@@ -20,7 +20,6 @@
 #include "system_clock.h"
 #include "unity.h"
 
-#define LEDn 4
 uint16_t led_pins[LEDn] = {
     LED1_PIN,
     LED2_PIN,
