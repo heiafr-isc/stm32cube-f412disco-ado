@@ -27,6 +27,19 @@
 extern "C" {
 #endif
 
+/**
+ * @brief Initialises the board
+ * @details
+ * This function initialises the board used for the ADO lecture.
+ * It does the following:
+ *
+ * - Initializes the Hardware Abstraction Layer
+ * - Initializes the system clock
+ * - Initializes the syscalls for printf ant orher IO functions
+ * - Initializes the 4 LEDs (green, orange, red and blue)
+ *
+ * @returns None
+ */
 void DiscoAdoInit();
 
 #ifdef __cplusplus

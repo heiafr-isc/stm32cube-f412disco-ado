@@ -15,6 +15,10 @@
  ******************************************************************************
  */
 
+/** @addtogroup ADO
+ * @{
+ */
+
 #include "f412disco_ado.h"
 
 #include "disco_syscalls.h"
@@ -32,3 +36,7 @@ void DiscoAdoInit() {
     BSP_LED_Init(LED_RED);
     BSP_LED_Init(LED_BLUE);
 }
+
+/**
+ * @}
+ */
