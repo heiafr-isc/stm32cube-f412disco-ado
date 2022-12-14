@@ -38,4 +38,4 @@ jobs:
       - name: Run PlatformIO
         run: |
           pio check --fail-on-defect low
-          pio test -e testing --without-uploading --without-testing
+          pio test -e testing-stm32cube-f412disco-ado --without-uploading --without-testing
